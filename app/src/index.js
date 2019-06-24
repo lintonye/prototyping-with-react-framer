@@ -3,6 +3,21 @@ import ReactDOM from "react-dom"
 import { Frame } from "framer"
 import "./styles.css"
 
+// parameter
+function microwave(food) {
+  // function body
+  // return value
+  return "heated " + food
+}
+
+function sandwichMaker(meat) {
+  let sandwich = "🍞"
+  sandwich = sandwich + meat
+  sandwich = sandwich + "🍀"
+  sandwich = sandwich + "🍞"
+  return sandwich
+}
+
 function App() {
   return (
     <div className="App">
