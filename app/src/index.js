@@ -18,6 +18,11 @@ function sandwichMaker(meat) {
   return sandwich
 }
 
+// call the function
+console.log(microwave(sandwichMaker("🥓")))
+console.log(microwave(sandwichMaker("🍤")))
+console.log(microwave(sandwichMaker("🍖")))
+
 function App() {
   return (
     <div className="App">
