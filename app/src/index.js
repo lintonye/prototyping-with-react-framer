@@ -25,6 +25,10 @@ console.log(microwave(sandwichMaker("🍖")))
 
 function App() {
   let [knobX, cycleKnobX] = useCycle(0, 60)
+  // let result = useCycle(0, 60)
+  // let knobX = result[0]
+  // let cycleKnobX = result[1]
+  console.log(knobX)
   return (
     <div className="App">
       <div>{sandwichMaker("🥓")}</div>
