@@ -26,6 +26,7 @@ console.log(microwave(sandwichMaker("🍖")))
 function App() {
   return (
     <div className="App">
+      <div>{sandwichMaker("🥓")}</div>
       <Frame width={120} height={60} borderRadius={30}>
         <Frame size={60} borderRadius={30} />
       </Frame>
