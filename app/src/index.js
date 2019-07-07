@@ -43,7 +43,12 @@ function App() {
           cycleKnobX()
         }}
       >
-        <Frame size={60} borderRadius={30} x={knobX} />
+        <Frame
+          size={60}
+          borderRadius={30}
+          animate={{ x: knobX }}
+          transition={{ duration: 0.2 }}
+        />
       </Frame>
     </div>
   )
