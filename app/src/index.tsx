@@ -23,6 +23,10 @@ function App() {
         position="relative"
       >
         <Frame
+          drag={"x"}
+          dragConstraints={{ left: 0, right: 250 }}
+          dragElastic={false}
+          dragMomentum={false}
           size={60}
           borderRadius={30}
           center="y"
