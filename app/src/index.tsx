@@ -5,9 +5,9 @@ import { Frame } from "framer"
 import "./styles.css"
 
 function App() {
-  function handleDrag() {
-    // change the scale of Skinny’s cheek
-    console.log("dragged!")
+  function handleDrag(event, info) {
+    // change the scale of Skinny’s cheek according to the position of slider knob
+    console.log(info.point.x)
   }
   return (
     <div
