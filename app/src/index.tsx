@@ -16,12 +16,31 @@ function App() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh"
+        height: "100vh",
+        flexDirection: "column"
       }}
     >
       {/* Skinny */}
-      <Frame position="relative">
-        Skinny<Frame>Cheek</Frame>
+      <Frame
+        width={290}
+        height={320}
+        position="relative"
+        background="transparent"
+      >
+        <Frame
+          background="url(https://cdn.glitch.com/071e5391-90f7-476b-b96c-1f51f7106b0c%2Fskinny-portrait.png)"
+          width={290}
+          height={290}
+          borderRadius={150}
+        />
+        {/* Cheek */}
+        <Frame
+          background="url(https://cdn.glitch.com/071e5391-90f7-476b-b96c-1f51f7106b0c%2Fcheek.png)"
+          width={79}
+          height={67}
+          left={155}
+          top={135}
+        />
       </Frame>
       <Frame
         width={280}
