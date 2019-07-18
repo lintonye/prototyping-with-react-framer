@@ -5,6 +5,10 @@ import { Frame } from "framer"
 import "./styles.css"
 
 function App() {
+  function handleDrag() {
+    // change the scale of Skinny’s cheek
+    console.log("dragged!")
+  }
   return (
     <div
       className="App"
@@ -15,6 +19,10 @@ function App() {
         height: "100vh"
       }}
     >
+      {/* Skinny */}
+      <Frame position="relative">
+        Skinny<Frame>Cheek</Frame>
+      </Frame>
       <Frame
         width={280}
         height={15}
@@ -27,6 +35,7 @@ function App() {
           dragConstraints={{ left: 0, right: 250 }}
           dragElastic={false}
           dragMomentum={false}
+          onDrag={handleDrag}
           size={60}
           borderRadius={30}
           center="y"
