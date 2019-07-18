@@ -1,13 +1,15 @@
 import * as React from "react"
 import { render } from "react-dom"
-import { Frame } from "framer"
+import { Frame, transform, useAnimation } from "framer"
 
 import "./styles.css"
 
 function App() {
+  let animationControls = useAnimation()
   function handleDrag(event, info) {
     // change the scale of Skinny’s cheek according to the position of slider knob
-    console.log(info.point.x)
+    let newScale = transform(info.point.x, [0, 250], [0.4, 1.5])
+    animationControls.start({ scale: newScale })
   }
   return (
     <div
@@ -40,6 +42,7 @@ function App() {
           height={67}
           left={155}
           top={135}
+          animate={animationControls}
         />
       </Frame>
       <Frame
