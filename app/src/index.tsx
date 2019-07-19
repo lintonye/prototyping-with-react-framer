@@ -9,7 +9,10 @@ function App() {
   function handleDrag(event, info) {
     // change the scale of Skinny’s cheek according to the position of slider knob
     let newScale = transform(info.point.x, [0, 250], [0.4, 1.5])
-    animationControls.start({ scale: newScale })
+    animationControls.start({
+      scale: newScale,
+      transition: { type: "spring", velocity: 0 }
+    })
   }
   return (
     <div
