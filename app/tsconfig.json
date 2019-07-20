@@ -1,7 +1,4 @@
 {
-  "include": [
-    "./src/*"
-  ],
   "compilerOptions": {
     "target": "es2015",
     "lib": [
@@ -24,5 +21,12 @@
     "moduleResolution": "node",
     "isolatedModules": true,
     "noEmit": true
-  }
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
 }
