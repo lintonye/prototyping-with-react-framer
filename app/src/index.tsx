@@ -7,7 +7,7 @@ import "./styles.css"
 function App() {
   return (
     <div className="App">
-      <Frame size={600} position="relative">
+      <Frame size={600}>
         <Frame
           // bg
           size={500}
