@@ -4,6 +4,58 @@ import { Frame, transform, useAnimation } from "framer"
 
 import "./styles.css"
 
+function Skinny() {
+  return (
+    <Frame
+      width={290}
+      height={320}
+      position="relative"
+      background="transparent"
+    >
+      <Frame
+        background="url(https://cdn.glitch.com/071e5391-90f7-476b-b96c-1f51f7106b0c%2Fskinny-portrait.png)"
+        width={290}
+        height={290}
+        borderRadius={150}
+      />
+      {/* Cheek */}
+      <Frame
+        background="url(https://cdn.glitch.com/071e5391-90f7-476b-b96c-1f51f7106b0c%2Fcheek.png)"
+        width={79}
+        height={67}
+        left={155}
+        top={135}
+        // animate={animationControls}
+      />
+    </Frame>
+  )
+}
+
+function Slider() {
+  return (
+    <Frame
+      width={280}
+      height={15}
+      borderRadius={30}
+      backgroundColor="white"
+      position="relative"
+    >
+      <Frame
+        drag={"x"}
+        dragConstraints={{ left: 0, right: 250 }}
+        dragElastic={false}
+        dragMomentum={false}
+        // onDrag={handleDrag}
+        size={60}
+        borderRadius={30}
+        center="y"
+        backgroundColor="white"
+        shadow="0 1px 5px 0 rgba(0, 0, 0, 0.25)"
+      />
+    </Frame>
+  )
+}
+
 function App() {
   let animationControls = useAnimation()
   function handleDrag(event, info) {
@@ -25,49 +77,8 @@ function App() {
         flexDirection: "column"
       }}
     >
-      {/* Skinny */}
-      <Frame
-        width={290}
-        height={320}
-        position="relative"
-        background="transparent"
-      >
-        <Frame
-          background="url(https://cdn.glitch.com/071e5391-90f7-476b-b96c-1f51f7106b0c%2Fskinny-portrait.png)"
-          width={290}
-          height={290}
-          borderRadius={150}
-        />
-        {/* Cheek */}
-        <Frame
-          background="url(https://cdn.glitch.com/071e5391-90f7-476b-b96c-1f51f7106b0c%2Fcheek.png)"
-          width={79}
-          height={67}
-          left={155}
-          top={135}
-          animate={animationControls}
-        />
-      </Frame>
-      <Frame
-        width={280}
-        height={15}
-        borderRadius={30}
-        backgroundColor="white"
-        position="relative"
-      >
-        <Frame
-          drag={"x"}
-          dragConstraints={{ left: 0, right: 250 }}
-          dragElastic={false}
-          dragMomentum={false}
-          onDrag={handleDrag}
-          size={60}
-          borderRadius={30}
-          center="y"
-          backgroundColor="white"
-          shadow="0 1px 5px 0 rgba(0, 0, 0, 0.25)"
-        />
-      </Frame>
+      <Skinny />
+      <Slider />
     </div>
   )
 }
