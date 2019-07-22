@@ -4,7 +4,7 @@ import { Frame, transform, useAnimation } from "framer"
 
 import "./styles.css"
 
-function Skinny() {
+function Skinny(props) {
   return (
     <Frame
       width={290}
@@ -25,7 +25,7 @@ function Skinny() {
         height={67}
         left={155}
         top={135}
-        // animate={animationControls}
+        animate={props.cheekAnimate}
       />
     </Frame>
   )
@@ -77,7 +77,7 @@ function App() {
         flexDirection: "column"
       }}
     >
-      <Skinny />
+      <Skinny cheekAnimate={animationControls} />
       <Slider />
     </div>
   )
