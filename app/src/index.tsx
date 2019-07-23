@@ -11,7 +11,16 @@ import "./styles.css"
 function App() {
   return (
     <div className="App">
-      <Frame size={600} center background={null}>
+      <Frame
+        size={600}
+        center
+        background={null}
+        onMouseMove={function(e) {
+          // 1. Find mouse position
+          console.log(e.clientX, e.clientY)
+          // 2. create animations
+        }}
+      >
         <Frame
           // bg
           size={500}
