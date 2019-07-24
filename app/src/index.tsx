@@ -39,6 +39,7 @@ function App() {
           left={20}
           background={null}
           image="https://image.flaticon.com/icons/svg/119/119596.svg"
+          animate={bgAnim}
         />
         <Frame
           // sun
@@ -46,6 +47,7 @@ function App() {
           top={15}
           background={null}
           image="https://image.flaticon.com/icons/svg/789/789395.svg"
+          animate={sunAnim}
         />
         <Frame
           // cloud
