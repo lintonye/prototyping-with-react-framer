@@ -1,10 +1,6 @@
 import * as React from "react"
 import ReactDOM from "react-dom"
 import { Frame } from "framer"
-import bgSvg from "./bg.svg"
-import sunSvg from "./sun.svg"
-import cloudsSvg from "./clouds.svg"
-import birdSvg from "./bird.svg"
 
 import "./styles.css"
 
@@ -26,28 +22,28 @@ function App() {
           size={500}
           top={50}
           left={20}
-          image={bgSvg}
           background={null}
+          image="https://image.flaticon.com/icons/svg/119/119596.svg"
         />
         <Frame
           // sun
           left={155}
           top={15}
-          image={sunSvg}
           background={null}
+          image="https://image.flaticon.com/icons/svg/789/789395.svg"
         />
         <Frame
           // cloud
           left={335}
           top={55}
-          image={cloudsSvg}
+          image="https://image.flaticon.com/icons/svg/414/414927.svg"
           background={null}
         />
         <Frame
           // bird
           left={35}
           top={200}
-          image={birdSvg}
+          image="https://image.flaticon.com/icons/svg/789/789392.svg"
           background={null}
         />
       </Frame>
