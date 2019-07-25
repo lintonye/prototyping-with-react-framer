@@ -1,6 +1,6 @@
 import * as React from "react"
 import ReactDOM from "react-dom"
-import { Frame, useAnimation } from "framer"
+import { Frame } from "framer"
 
 import "./styles.css"
 
