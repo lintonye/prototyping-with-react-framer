@@ -11,7 +11,9 @@ const style = {
   backgroundSize: "contain",
   backgroundPosition: "center",
   backgroundColor: "#55CCFF",
-  boxShadow: "2px 2px 10px 0 rgba(0,0,0,0.25)"
+  boxShadow: "2px 2px 10px 0 rgba(0,0,0,0.25)",
+  borderRadius: 10,
+  height: 300
 }
 
 function App() {
@@ -20,10 +22,8 @@ function App() {
       <Frame
         center
         drag="x"
-        height={300}
-        style={style}
         dragConstraints={{ left: -200, right: 200 }}
-        borderRadius={10}
+        style={style}
       />
     </div>
   )
