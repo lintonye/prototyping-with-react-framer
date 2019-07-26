@@ -1,6 +1,6 @@
 import * as React from "react"
 import ReactDOM from "react-dom"
-import { Frame, useMotionValue } from "framer"
+import { Frame, useMotionValue, useTransform } from "framer"
 
 import "./styles.css"
 
@@ -18,6 +18,8 @@ const style = {
 
 function App() {
   let mv = useMotionValue(0)
+  let rotateMv = useTransform(mv, [-200, 200], [-50, 50])
+  let opacityMv = useTransform(mv, [-200, -150, 0, 150, 200], [0, 1, 1, 1, 0])
 
   return (
     <div className="App">
@@ -25,7 +27,8 @@ function App() {
         center
         drag="x"
         x={mv}
-        y={mv}
+        rotate={rotateMv}
+        opacity={opacityMv}
         dragConstraints={{ left: -200, right: 200 }}
         style={style}
       />
