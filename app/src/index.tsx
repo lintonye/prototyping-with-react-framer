@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <Frame
-        size={600}
+        size={550}
         background={null}
         center
         onMouseMove={function(event) {
@@ -21,7 +21,7 @@ function App() {
           let offsetY = event.clientY - window.innerHeight / 2
           // 1. Find mouse position
           // 2. create animations
-          birdAnim.start({ x: offsetX / 6, y: offsetY / 6 })
+          birdAnim.start({ x: offsetX / 3.5, y: offsetY / 3.5 })
           cloudsAnim.start({ x: offsetX / 8, y: offsetY / 8 })
           sunAnim.start({ x: offsetX / 10, y: offsetY / 10 })
           bgAnim.start({ x: offsetX / 14, y: offsetY / 14 })
