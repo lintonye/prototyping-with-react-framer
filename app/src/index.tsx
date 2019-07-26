@@ -1,6 +1,6 @@
 import * as React from "react"
 import ReactDOM from "react-dom"
-import { Frame } from "framer"
+import { Frame, useMotionValue } from "framer"
 
 import "./styles.css"
 
@@ -17,11 +17,15 @@ const style = {
 }
 
 function App() {
+  let mv = useMotionValue(0)
+
   return (
     <div className="App">
       <Frame
         center
         drag="x"
+        x={mv}
+        y={mv}
         dragConstraints={{ left: -200, right: 200 }}
         style={style}
       />
