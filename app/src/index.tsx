@@ -1,11 +1,12 @@
 import * as React from "react"
 import ReactDOM from "react-dom"
-import { Frame, useAnimation } from "framer"
+import { Frame, useAnimation, useMotionValue } from "framer"
 
 import "./styles.css"
 
 function App() {
-  let birdAnim = useAnimation()
+  let birdX = useMotionValue(0)
+  let birdY = useMotionValue(0)
   let cloudsAnim = useAnimation()
   let sunAnim = useAnimation()
   let bgAnim = useAnimation()
@@ -21,7 +22,9 @@ function App() {
           let offsetY = event.clientY - window.innerHeight / 2
           // 1. Find mouse position
           // 2. create animations
-          birdAnim.start({ x: offsetX / 3.5, y: offsetY / 3.5 })
+          // birdAnim.start({ x: offsetX / 3.5, y: offsetY / 3.5 })
+          birdX.set(offsetX / 3.5)
+          birdY.set(offsetY / 3.5)
           cloudsAnim.start({ x: offsetX / 8, y: offsetY / 8 })
           sunAnim.start({ x: offsetX / 10, y: offsetY / 10 })
           bgAnim.start({ x: offsetX / 14, y: offsetY / 14 })
@@ -34,7 +37,6 @@ function App() {
           left={20}
           background={null}
           image="https://image.flaticon.com/icons/svg/119/119596.svg"
-          animate={bgAnim}
         />
         <Frame
           // sun
@@ -58,7 +60,8 @@ function App() {
           left={35}
           top={200}
           image="https://image.flaticon.com/icons/svg/789/789392.svg"
-          animate={birdAnim}
+          x={birdX}
+          y={birdY}
         />
       </Frame>
     </div>
