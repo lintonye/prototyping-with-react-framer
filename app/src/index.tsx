@@ -7,9 +7,12 @@ import "./styles.css"
 function App() {
   let birdX = useMotionValue(0)
   let birdY = useMotionValue(0)
-  let cloudsAnim = useAnimation()
-  let sunAnim = useAnimation()
-  let bgAnim = useAnimation()
+  let cloudsX = useMotionValue(0)
+  let cloudsY = useMotionValue(0)
+  let sunX = useMotionValue(0)
+  let sunY = useMotionValue(0)
+  let bgX = useMotionValue(0)
+  let bgY = useMotionValue(0)
 
   return (
     <div className="App">
@@ -25,9 +28,12 @@ function App() {
           // birdAnim.start({ x: offsetX / 3.5, y: offsetY / 3.5 })
           birdX.set(offsetX / 3.5)
           birdY.set(offsetY / 3.5)
-          cloudsAnim.start({ x: offsetX / 8, y: offsetY / 8 })
-          sunAnim.start({ x: offsetX / 10, y: offsetY / 10 })
-          bgAnim.start({ x: offsetX / 14, y: offsetY / 14 })
+          cloudsX.set(offsetX / 8)
+          cloudsY.set(offsetY / 8)
+          sunX.set(offsetX / 10)
+          sunY.set(offsetY / 10)
+          bgX.set(offsetX / 14)
+          bgY.set(offsetY / 14)
         }}
       >
         <Frame
@@ -37,6 +43,8 @@ function App() {
           left={20}
           background={null}
           image="https://image.flaticon.com/icons/svg/119/119596.svg"
+          x={bgX}
+          y={bgY}
         />
         <Frame
           // sun
@@ -44,7 +52,8 @@ function App() {
           top={15}
           background={null}
           image="https://image.flaticon.com/icons/svg/789/789395.svg"
-          animate={sunAnim}
+          x={sunX}
+          y={sunY}
         />
         <Frame
           // cloud
@@ -52,7 +61,8 @@ function App() {
           left={335}
           top={55}
           image="https://image.flaticon.com/icons/svg/414/414927.svg"
-          animate={cloudsAnim}
+          x={cloudsX}
+          y={cloudsY}
         />
         <Frame
           // bird
