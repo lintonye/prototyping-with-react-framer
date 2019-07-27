@@ -1,79 +1,37 @@
 import * as React from "react"
 import ReactDOM from "react-dom"
-import {
-  Frame,
-  useAnimation,
-  useMotionValue,
-  useTransform,
-  useSpring
-} from "framer"
+import { Frame, useMotionValue, useTransform } from "framer"
 
 import "./styles.css"
 
+const style = {
+  backgroundImage:
+    "url(https://cdn.glitch.com/071e5391-90f7-476b-b96c-1f51f7106b0c%2Fbird_strong_small.svg?v=1560032432704)",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "contain",
+  backgroundPosition: "center",
+  backgroundColor: "#55CCFF",
+  boxShadow: "2px 2px 10px 0 rgba(0,0,0,0.25)",
+  borderRadius: 10,
+  height: 300
+}
+
 function App() {
-  let mouseX = useSpring(0)
-  let mouseY = useSpring(0)
-  // arrow function
-  let birdX = useTransform(mouseX, value => value / 3.5)
-  let birdY = useTransform(mouseY, value => value / 3.5)
-  let cloudsX = useTransform(mouseX, value => value / 8)
-  let cloudsY = useTransform(mouseY, value => value / 8)
-  let sunX = useTransform(mouseX, value => value / 10)
-  let sunY = useTransform(mouseY, value => value / 10)
-  let bgX = useTransform(mouseX, value => value / 14)
-  let bgY = useTransform(mouseY, value => value / 14)
+  let mv = useMotionValue(0)
+  let rotateMv = useTransform(mv, [-200, 200], [-50, 50])
+  let opacityMv = useTransform(mv, [-200, -150, 0, 150, 200], [0, 1, 1, 1, 0])
 
   return (
     <div className="App">
       <Frame
-        size={550}
-        background={null}
         center
-        onMouseMove={function(event) {
-          let offsetX = event.clientX - window.innerWidth / 2
-          let offsetY = event.clientY - window.innerHeight / 2
-          mouseX.set(offsetX)
-          mouseY.set(offsetY)
-        }}
-      >
-        <Frame
-          // bg
-          size={500}
-          top={50}
-          left={20}
-          background={null}
-          image="https://image.flaticon.com/icons/svg/119/119596.svg"
-          x={bgX}
-          y={bgY}
-        />
-        <Frame
-          // sun
-          left={155}
-          top={15}
-          background={null}
-          image="https://image.flaticon.com/icons/svg/789/789395.svg"
-          x={sunX}
-          y={sunY}
-        />
-        <Frame
-          // cloud
-          background={null}
-          left={335}
-          top={55}
-          image="https://image.flaticon.com/icons/svg/414/414927.svg"
-          x={cloudsX}
-          y={cloudsY}
-        />
-        <Frame
-          // bird
-          background={null}
-          left={35}
-          top={200}
-          image="https://image.flaticon.com/icons/svg/789/789392.svg"
-          x={birdX}
-          y={birdY}
-        />
-      </Frame>
+        drag="x"
+        x={mv}
+        rotate={rotateMv}
+        opacity={opacityMv}
+        dragConstraints={{ left: -200, right: 200 }}
+        style={style}
+      />
     </div>
   )
 }
