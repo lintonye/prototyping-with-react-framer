@@ -33,8 +33,12 @@ function App() {
         dragConstraints={{ left: -200, right: 200 }}
         style={style}
         animate={animControls}
-        onDragEnd={function() {
-          animControls.start({ x: 0 })
+        onDragEnd={function(_, info) {
+          if (Math.abs(info.point.x) < 150) {
+            animControls.start({ x: 0 })
+          } else {
+            animControls.start({ x: info.point.x < 0 ? -200 : 200 })
+          }
         }}
       />
     </div>
