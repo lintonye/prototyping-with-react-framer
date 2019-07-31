@@ -4,19 +4,10 @@ import { render } from "react-dom"
 import "./styles.css"
 
 function App() {
-  let count = 0
-  console.log("new page!")
   return (
     <div className="App">
-      <h1>Count: {count}</h1>
-      <button
-        onClick={function() {
-          count = count + 1
-          console.log(count)
-        }}
-      >
-        +1
-      </button>
+      <h1>Hello CodeSandbox</h1>
+      <h2>Start editing to see some magic happen!</h2>
     </div>
   )
 }
