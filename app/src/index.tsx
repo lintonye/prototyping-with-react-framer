@@ -11,6 +11,7 @@ function Radio(props) {
       size="auto"
       style={{ display: "flex", marginBottom: 10 }}
       background="null"
+      {...props}
     >
       <Frame
         size={30}
@@ -35,10 +36,20 @@ function Radio(props) {
 
 // DRY = Do not Repeat Yourself
 function RadioGroup({ choices, ...props }) {
+  let [selectedIndex, setSelectedIndex] = React.useState(0)
   return (
     <Frame background={null} {...props}>
-      {choices.map(choice => (
-        <Radio key={choice}>{choice}</Radio>
+      {choices.map((choice, index) => (
+        <Radio
+          selected={index === selectedIndex}
+          key={choice}
+          onClick={function() {
+            // change selectedIndex
+            setSelectedIndex(index)
+          }}
+        >
+          {choice}
+        </Radio>
       ))}
     </Frame>
   )
