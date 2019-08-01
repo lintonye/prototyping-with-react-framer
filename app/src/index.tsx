@@ -36,7 +36,7 @@ function Radio(props) {
 // DRY = Do not Repeat Yourself
 function RadioGroup(props) {
   return (
-    <Frame background={null}>
+    <Frame background={null} {...props}>
       {props.choices.map(choice => (
         <Radio key={choice}>{choice}</Radio>
       ))}
@@ -56,7 +56,7 @@ function App() {
   ]
   return (
     <div className="App">
-      <RadioGroup choices={options} />
+      <RadioGroup center size="auto" choices={options} />
     </div>
   )
 }
