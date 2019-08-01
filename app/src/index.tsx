@@ -34,10 +34,10 @@ function Radio(props) {
 }
 
 // DRY = Do not Repeat Yourself
-function RadioGroup(props) {
+function RadioGroup({ choices, ...props }) {
   return (
     <Frame background={null} {...props}>
-      {props.choices.map(choice => (
+      {choices.map(choice => (
         <Radio key={choice}>{choice}</Radio>
       ))}
     </Frame>
