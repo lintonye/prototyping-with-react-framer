@@ -3,8 +3,18 @@ import { render } from "react-dom"
 import "./styles.css"
 import { Frame, useCycle } from "framer"
 
+function useCycle2(options) {
+  let [index, setIndex] = React.useState(0)
+  let currentOption = options[index]
+  function cycle() {
+    setIndex(index < options.length - 1 ? index + 1 : 0)
+  }
+  return [currentOption, cycle]
+}
+
 function App() {
-  let [mode, cycleMode] = useCycle("off", "on")
+  let [mode, cycleMode] = useCycle2(["off", "on"])
+  console.log("new page, mode=", mode)
   return (
     <div className="App">
       <Frame
