@@ -39,7 +39,7 @@ function Skinny(props) {
         height={32}
         left={190}
         top={88}
-        animate={props.leftEyeBrowAnimation}
+        animate={props.leftEyebrowAnimation}
       />
       {/* Eyebrow right */}
       <Frame
@@ -48,7 +48,7 @@ function Skinny(props) {
         height={14}
         left={223}
         top={91}
-        animate={props.rightEyeBrowAnimation}
+        animate={props.rightEyebrowAnimation}
       />
       {/* Cheek */}
       <Frame
@@ -105,8 +105,8 @@ function Slider(props) {
 function App() {
   const cheekAnimation = useAnimation()
   const wingAnimation = useAnimation()
-  const leftEyeBrowAnimation = useAnimation()
-  const rightEyeBrowAnimation = useAnimation()
+  const leftEyebrowAnimation = useAnimation()
+  const rightEyebrowAnimation = useAnimation()
   return (
     <div
       className="App"
@@ -121,8 +121,8 @@ function App() {
       <Skinny
         cheekAnimation={cheekAnimation}
         wingAnimation={wingAnimation}
-        leftEyeBrowAnimation={leftEyeBrowAnimation}
-        rightEyeBrowAnimation={rightEyeBrowAnimation}
+        leftEyebrowAnimation={leftEyebrowAnimation}
+        rightEyebrowAnimation={rightEyebrowAnimation}
       />
       <Slider
         onDrag={function(event, info) {
