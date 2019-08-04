@@ -133,6 +133,37 @@ function App() {
             scale,
             transition: { type: "spring", velocity: 0 }
           })
+          if (info.point.x > 100) {
+            wingAnimation.start({
+              rotate: 70,
+              transition: { type: "spring", velocity: 0 }
+            })
+            leftEyebrowAnimation.start({
+              x: -3,
+              y: -6,
+              transition: { type: "spring", velocity: 0 }
+            })
+            rightEyebrowAnimation.start({
+              x: 3,
+              y: -6,
+              transition: { type: "spring", velocity: 0 }
+            })
+          } else {
+            wingAnimation.start({
+              rotate: -80,
+              transition: { type: "spring", velocity: 0 }
+            })
+            leftEyebrowAnimation.start({
+              x: 0,
+              y: 0,
+              transition: { type: "spring", velocity: 0 }
+            })
+            rightEyebrowAnimation.start({
+              x: 0,
+              y: 0,
+              transition: { type: "spring", velocity: 0 }
+            })
+          }
         }}
       />
     </div>
