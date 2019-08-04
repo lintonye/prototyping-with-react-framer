@@ -32,7 +32,7 @@ function Skinny(props) {
   )
 }
 
-function Slider(props) {
+function Slider({ onSlide }) {
   return (
     <Frame
       width={280}
@@ -46,7 +46,7 @@ function Slider(props) {
         dragConstraints={{ left: 0, right: 250 }}
         dragElastic={false}
         dragMomentum={false}
-        onDrag={props.onSlide}
+        onDrag={onSlide}
         size={60}
         borderRadius={30}
         center="y"
