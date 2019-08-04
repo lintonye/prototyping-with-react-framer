@@ -28,9 +28,27 @@ function Skinny(props) {
       />
       {/* body */}
       <Frame
-        background="url(https://cdn.glitch.com/071e5391-90f7-476b-b96c-1f51f7106b0c%2Fskinny-no-wings-2.png)"
+        background="url(https://cdn.glitch.com/071e5391-90f7-476b-b96c-1f51f7106b0c%2Fskinny-without-eyebrows.png?v=1564936113297)"
         width={290}
         height={290}
+      />
+      {/* Eyebrow left */}
+      <Frame
+        background="url(https://cdn.glitch.com/071e5391-90f7-476b-b96c-1f51f7106b0c%2Feyebrow-left.png?v=1564936189694)"
+        width={30}
+        height={32}
+        left={190}
+        top={88}
+        animate={props.leftEyeBrowAnimation}
+      />
+      {/* Eyebrow right */}
+      <Frame
+        background="url(https://cdn.glitch.com/071e5391-90f7-476b-b96c-1f51f7106b0c%2Feyebrow-right.png?v=1564936189572)"
+        width={24}
+        height={14}
+        left={223}
+        top={91}
+        animate={props.rightEyeBrowAnimation}
       />
       {/* Cheek */}
       <Frame
@@ -87,6 +105,8 @@ function Slider(props) {
 function App() {
   const cheekAnimation = useAnimation()
   const wingAnimation = useAnimation()
+  const leftEyeBrowAnimation = useAnimation()
+  const rightEyeBrowAnimation = useAnimation()
   return (
     <div
       className="App"
@@ -98,7 +118,12 @@ function App() {
         height: "100vh"
       }}
     >
-      <Skinny cheekAnimation={cheekAnimation} wingAnimation={wingAnimation} />
+      <Skinny
+        cheekAnimation={cheekAnimation}
+        wingAnimation={wingAnimation}
+        leftEyeBrowAnimation={leftEyeBrowAnimation}
+        rightEyeBrowAnimation={rightEyeBrowAnimation}
+      />
       <Slider
         onDrag={function(event, info) {
           //console.log(info.point.x)
