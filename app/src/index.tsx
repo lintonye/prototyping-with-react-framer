@@ -1,22 +1,36 @@
 import * as React from "react"
-import { render } from "react-dom"
-import { Frame, transform, useAnimation } from "framer"
+import ReactDOM from "react-dom"
+import { Frame, useAnimation, transform } from "framer"
 
 import "./styles.css"
 
 function Skinny(props) {
   return (
     <Frame
-      width={290}
-      height={320}
-      position="relative"
+      size={290}
       background="transparent"
+      borderRadius={150}
+      overflow="hidden"
+      backgroundColor="white"
+      position="relative"
+      style={{ margin: 30 }}
     >
+      {/* Wing far side */}
       <Frame
-        background="url(https://cdn.glitch.com/071e5391-90f7-476b-b96c-1f51f7106b0c%2Fskinny-portrait.png)"
+        background="url(https://cdn.glitch.com/071e5391-90f7-476b-b96c-1f51f7106b0c%2Fwing-far.png)"
+        width={84}
+        height={119}
+        left={50}
+        top={50}
+        animate={props.wingAnimation}
+        style={{ transformOrigin: "bottom right" }}
+        rotate={-80}
+      />
+      {/* body */}
+      <Frame
+        background="url(https://cdn.glitch.com/071e5391-90f7-476b-b96c-1f51f7106b0c%2Fskinny-no-wings-2.png)"
         width={290}
         height={290}
-        borderRadius={150}
       />
       {/* Cheek */}
       <Frame
@@ -25,63 +39,80 @@ function Skinny(props) {
         height={67}
         left={155}
         top={135}
-        animate={props.cheekAnimate}
+        animate={props.cheekAnimation}
+      />
+      {/* Wing near side */}
+      <Frame
+        background="url(https://cdn.glitch.com/071e5391-90f7-476b-b96c-1f51f7106b0c%2Fwing-near.png)"
+        width={124}
+        height={71}
+        left={-20}
+        top={110}
+        animate={props.wingAnimation}
+        style={{ transformOrigin: "bottom right" }}
+        rotate={-80}
       />
     </Frame>
   )
 }
 
-function Slider() {
+function Slider(props) {
   return (
     <Frame
       width={280}
       height={15}
       borderRadius={30}
-      backgroundColor="white"
       position="relative"
+      backgroundColor="white"
+      style={{ margin: 30 }}
     >
       <Frame
-        drag={"x"}
-        dragConstraints={{ left: 0, right: 250 }}
-        dragElastic={false}
-        dragMomentum={false}
-        // onDrag={handleDrag}
         size={60}
         borderRadius={30}
         center="y"
         backgroundColor="white"
         shadow="0 1px 5px 0 rgba(0, 0, 0, 0.25)"
+        drag="x"
+        dragConstraints={{ left: 0, right: 220 }}
+        dragElastic={false}
+        dragMomentum={false}
+        onDrag={props.onDrag}
       />
     </Frame>
   )
 }
 
+// Scope
+
 function App() {
-  let animationControls = useAnimation()
-  function handleDrag(event, info) {
-    // change the scale of Skinny’s cheek according to the position of slider knob
-    let newScale = transform(info.point.x, [0, 250], [0.4, 1.5])
-    animationControls.start({
-      scale: newScale,
-      transition: { type: "spring", velocity: 0 }
-    })
-  }
+  const cheekAnimation = useAnimation()
+  const wingAnimation = useAnimation()
   return (
     <div
       className="App"
       style={{
         display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
-        flexDirection: "column"
+        height: "100vh"
       }}
     >
-      <Skinny cheekAnimate={animationControls} />
-      <Slider />
+      <Skinny cheekAnimation={cheekAnimation} wingAnimation={wingAnimation} />
+      <Slider
+        onDrag={function(event, info) {
+          //console.log(info.point.x)
+          //  change scale of cheek based on info.point.x
+          const scale = transform(info.point.x, [0, 220], [0.4, 1.5])
+          cheekAnimation.start({
+            scale,
+            transition: { type: "spring", velocity: 0 }
+          })
+        }}
+      />
     </div>
   )
 }
 
 const rootElement = document.getElementById("root")
-render(<App />, rootElement)
+ReactDOM.render(<App />, rootElement)
