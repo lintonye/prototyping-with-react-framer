@@ -25,13 +25,14 @@ function Skinny(props) {
         height={67}
         left={155}
         top={135}
+        // props = { cheekAnimate: ... }
         animate={props.cheekAnimate}
       />
     </Frame>
   )
 }
 
-function Slider() {
+function Slider(props) {
   return (
     <Frame
       width={280}
@@ -45,7 +46,7 @@ function Slider() {
         dragConstraints={{ left: 0, right: 250 }}
         dragElastic={false}
         dragMomentum={false}
-        // onDrag={handleDrag}
+        onDrag={props.onSlide}
         size={60}
         borderRadius={30}
         center="y"
@@ -78,7 +79,7 @@ function App() {
       }}
     >
       <Skinny cheekAnimate={animationControls} />
-      <Slider />
+      <Slider onSlide={handleDrag} />
     </div>
   )
 }
