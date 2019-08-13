@@ -29,24 +29,10 @@ function Body() {
   )
 }
 
-function Padlock() {
-  // const [locked, setLocked] = useState(true)
-  const controls = useAnimation()
-  let locked = true
-  async function toggleLock() {
-    if (locked) {
-      await controls.start({ rotateY: 0 })
-      await controls.start({ y: 0 })
-    } else {
-      await controls.start({ y: -30 })
-      await controls.start({ rotateY: 180 })
-    }
-    // setLocked(!locked)
-    locked = !locked
-  }
+function Padlock(props) {
   return (
-    <Frame center background={null} width={100} onTap={toggleLock}>
-      <Frame background={null} left={5} animate={controls} originX={0.41}>
+    <Frame background={null} width={100} {...props}>
+      <Frame background={null} left={5}>
         <Shackle />
       </Frame>
       <Frame background={null} top={60}>
@@ -57,7 +43,7 @@ function Padlock() {
 }
 
 function App() {
-  return <Padlock />
+  return <Padlock center />
 }
 
 const rootElement = document.getElementById("root")
