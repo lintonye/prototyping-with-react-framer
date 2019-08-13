@@ -30,9 +30,20 @@ function Body() {
 }
 
 function Padlock(props) {
+  let shackleAnim = useAnimation()
   return (
-    <Frame background={null} width={100} {...props}>
-      <Frame background={null} left={5}>
+    <Frame
+      background={null}
+      width={100}
+      onTap={async () => {
+        // 1. lift up
+        await shackleAnim.start({ y: -30 })
+        // 2. rotate
+        shackleAnim.start({ rotateY: 180 })
+      }}
+      {...props}
+    >
+      <Frame background={null} left={5} animate={shackleAnim} originX={0.41}>
         <Shackle />
       </Frame>
       <Frame background={null} top={60}>
