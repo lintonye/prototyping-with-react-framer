@@ -43,15 +43,15 @@ function Padlock(props) {
 }
 
 function App() {
-  const lockControls = useAnimation()
-  const textControls = useAnimation()
+  const lockAnim = useAnimation()
+  const textAnim = useAnimation()
 
   return (
     <Frame background={null} center>
-      <Padlock animate={lockControls} left={45} />
+      <Padlock animate={lockAnim} left={45} />
       <Frame
         color="white"
-        animate={textControls}
+        animate={textAnim}
         background={null}
         style={{ fontSize: 30 }}
         overflow="hidden"
