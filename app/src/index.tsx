@@ -45,10 +45,26 @@ function Padlock(props) {
 function App() {
   const lockAnim = useAnimation()
   const textAnim = useAnimation()
-
+  async function playAnimation() {
+    const spring = {
+      type: "spring",
+      stiffness: 500,
+      damping: 4,
+      restSpeed: 0.5
+    }
+    lockAnim.start({ x: -10, transition: spring })
+    await lockAnim.start({ scale: 0.2, transition: { delay: 0.5 } })
+    lockAnim.start({ x: -50 })
+    textAnim.start({ x: -40 })
+    textAnim.start({
+      width: 400,
+      transition: { duration: 1.5, ease: "easeOut" }
+    })
+  }
+  playAnimation()
   return (
     <Frame background={null} center>
-      <Padlock animate={lockAnim} left={45} />
+      <Padlock animate={lockAnim} left={45} originX="left" />
       <Frame
         color="white"
         animate={textAnim}
