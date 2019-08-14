@@ -30,20 +30,9 @@ function Body() {
 }
 
 function Padlock(props) {
-  let shackleAnim = useAnimation()
   return (
-    <Frame
-      background={null}
-      width={100}
-      onTap={async () => {
-        // 1. lift up
-        await shackleAnim.start({ y: -30 })
-        // 2. rotate
-        shackleAnim.start({ rotateY: 180 })
-      }}
-      {...props}
-    >
-      <Frame background={null} left={5} animate={shackleAnim} originX={0.41}>
+    <Frame background={null} {...props}>
+      <Frame background={null} left={5}>
         <Shackle />
       </Frame>
       <Frame background={null} top={60}>
@@ -54,7 +43,26 @@ function Padlock(props) {
 }
 
 function App() {
-  return <Padlock center />
+  const lockControls = useAnimation()
+  const textControls = useAnimation()
+
+  return (
+    <Frame background={null} center>
+      <Padlock animate={lockControls} left={45} />
+      <Frame
+        color="white"
+        animate={textControls}
+        background={null}
+        style={{ fontSize: 30 }}
+        overflow="hidden"
+        width={0}
+      >
+        <Frame background={null} width={400}>
+          Swipe up to unlock
+        </Frame>
+      </Frame>
+    </Frame>
+  )
 }
 
 const rootElement = document.getElementById("root")
