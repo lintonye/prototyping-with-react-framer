@@ -7,9 +7,49 @@ import "./styles.css"
 function Fab({ buttons, ...props }) {
   const [mode, cycleMode] = useCycle("folded", "expanded")
   return (
-    <Frame background={null} size="auto" animate={mode} {...props}>
+    <Frame
+      background={null}
+      size="auto"
+      animate={mode}
+      initial="folded"
+      {...props}
+    >
+      <Frame
+        background={null}
+        size="auto"
+        center="x"
+        position="relative"
+        variants={{
+          folded: {
+            transition: { staggerChildren: 0.05 }
+          },
+          expanded: {
+            transition: { staggerChildren: 0.05, staggerDirection: -1 }
+          }
+        }}
+      >
+        {buttons.map(button => (
+          <Frame
+            size={40}
+            borderRadius="50%"
+            image={button.image}
+            key={button.image}
+            position="relative"
+            center="x"
+            border="2px solid white"
+            shadow="1px 1px 5px rgba(0,0,0,0.5)"
+            style={{ marginBottom: 16 }}
+            variants={{
+              folded: { scale: 0 },
+              expanded: { scale: 1 }
+            }}
+          />
+        ))}
+      </Frame>
+
       {/* FAB */}
       <Frame
+        position="relative"
         size={60}
         borderRadius="50%"
         backgroundColor="white"
