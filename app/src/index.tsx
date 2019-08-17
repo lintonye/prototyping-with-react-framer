@@ -1,6 +1,6 @@
 import * as React from "react"
 import { render } from "react-dom"
-import { Frame, transform, useCycle } from "framer"
+import { Frame } from "framer"
 
 import "./styles.css"
 
