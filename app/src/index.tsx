@@ -7,15 +7,19 @@ import "./styles.css"
 function App() {
   return (
     <div>
+      {/* Plaid background */}
       <Frame
         height={2000}
         opacity={0.5}
         background="url(https://cdn.glitch.com/071e5391-90f7-476b-b96c-1f51f7106b0c%2Fplaid.jpeg?v=1560553758201)"
       />
-      <Frame background="transparent" size="auto" top={400}>
-        <h1>⚛️ 🍉</h1>
-        <h2>Prototyping with React+Framer</h2>
-      </Frame>
+      <Frame
+        backgroundColor="white"
+        size={200}
+        top={400}
+        borderRadius={20}
+        image="/starship.png"
+      />
     </div>
   )
 }
