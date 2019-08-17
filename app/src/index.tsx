@@ -14,6 +14,7 @@ function App() {
         opacity={0.5}
         background="url(/plaid.jpeg)"
       />
+      {/* Icon */}
       <Frame
         backgroundColor="white"
         size={200}
