@@ -14,7 +14,7 @@ function App() {
       />
       <Frame background="transparent" size="auto" top={400}>
         <h1>⚛️ 🍉</h1>
-        <h2>React/Framer Summer Challenge</h2>
+        <h2>Prototyping with React+Framer</h2>
       </Frame>
     </div>
   )
