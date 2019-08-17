@@ -6,21 +6,23 @@ import "./styles.css"
 
 function App() {
   return (
-    <div>
+    <Frame background={null}>
       {/* Plaid background */}
       <Frame
         height={2000}
+        width="100%"
         opacity={0.5}
-        background="url(https://cdn.glitch.com/071e5391-90f7-476b-b96c-1f51f7106b0c%2Fplaid.jpeg?v=1560553758201)"
+        background="url(/plaid.jpeg)"
       />
       <Frame
         backgroundColor="white"
         size={200}
         top={400}
         borderRadius={20}
+        center="x"
         image="/starship.png"
       />
-    </div>
+    </Frame>
   )
 }
 
