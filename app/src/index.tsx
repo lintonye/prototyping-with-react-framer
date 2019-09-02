@@ -1,85 +1,85 @@
 import * as React from "react"
 import { render } from "react-dom"
-import { Frame, transform, useAnimation } from "framer"
 
 import "./styles.css"
+import { ResponsiveLine } from "@nivo/line"
+import * as data from "./tsla.json"
 
-function Skinny(props) {
-  return (
-    <Frame
-      width={290}
-      height={320}
-      position="relative"
-      background="transparent"
-    >
-      <Frame
-        background="url(https://cdn.glitch.com/071e5391-90f7-476b-b96c-1f51f7106b0c%2Fskinny-portrait.png)"
-        width={290}
-        height={290}
-        borderRadius={150}
-      />
-      {/* Cheek */}
-      <Frame
-        background="url(https://cdn.glitch.com/071e5391-90f7-476b-b96c-1f51f7106b0c%2Fcheek.png)"
-        width={79}
-        height={67}
-        left={155}
-        top={135}
-        // props = { cheekAnimate: ... }
-        animate={props.cheekAnimate}
-      />
-    </Frame>
-  )
-}
-
-function Slider({ onSlide }) {
-  return (
-    <Frame
-      width={280}
-      height={15}
-      borderRadius={30}
-      backgroundColor="white"
-      position="relative"
-    >
-      <Frame
-        drag={"x"}
-        dragConstraints={{ left: 0, right: 250 }}
-        dragElastic={false}
-        dragMomentum={false}
-        onDrag={onSlide}
-        size={60}
-        borderRadius={30}
-        center="y"
-        backgroundColor="white"
-        shadow="0 1px 5px 0 rgba(0, 0, 0, 0.25)"
-      />
-    </Frame>
-  )
-}
+// make sure parent container have a defined height when using
+// responsive component, otherwise height will be 0 and
+// no chart will be rendered.
+// website examples showcase many properties,
+// you'll often use just a few of them.
+const Chart = ({ data /* see data tab */ }) => (
+  <ResponsiveLine
+    data={data}
+    margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+    xScale={{ type: "point" }}
+    yScale={{ type: "linear", stacked: true, min: "auto", max: "auto" }}
+    axisTop={null}
+    axisRight={null}
+    axisBottom={{
+      orient: "bottom",
+      tickSize: 5,
+      tickPadding: 5,
+      tickRotation: 0,
+      legend: "transportation",
+      legendOffset: 36,
+      legendPosition: "middle"
+    }}
+    axisLeft={{
+      orient: "left",
+      tickSize: 5,
+      tickPadding: 5,
+      tickRotation: 0,
+      legend: "count",
+      legendOffset: -40,
+      legendPosition: "middle"
+    }}
+    colors={{ scheme: "dark2" }}
+    lineWidth={4}
+    pointSize={10}
+    pointColor={{ theme: "background" }}
+    pointBorderWidth={2}
+    pointBorderColor={{ from: "serieColor" }}
+    pointLabel="y"
+    pointLabelYOffset={-12}
+    useMesh={true}
+    legends={[
+      {
+        anchor: "bottom-right",
+        direction: "column",
+        justify: false,
+        translateX: 100,
+        translateY: 0,
+        itemsSpacing: 0,
+        itemDirection: "left-to-right",
+        itemWidth: 80,
+        itemHeight: 20,
+        itemOpacity: 0.75,
+        symbolSize: 12,
+        symbolShape: "circle",
+        symbolBorderColor: "rgba(0, 0, 0, .5)",
+        effects: [
+          {
+            on: "hover",
+            style: {
+              itemBackground: "rgba(0, 0, 0, .03)",
+              itemOpacity: 1
+            }
+          }
+        ]
+      }
+    ]}
+  />
+)
 
 function App() {
-  let animationControls = useAnimation()
-  function handleDrag(event, info) {
-    // change the scale of Skinny’s cheek according to the position of slider knob
-    let newScale = transform(info.point.x, [0, 250], [0.4, 1.5])
-    animationControls.start({
-      scale: newScale,
-      transition: { type: "spring", velocity: 0 }
-    })
-  }
   return (
-    <div
-      className="App"
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-        flexDirection: "column"
-      }}
-    >
-      <Skinny cheekAnimate={animationControls} />
-      <Slider onSlide={handleDrag} />
+    <div className="App">
+      <div style={{ width: 800, height: 400 }}>
+        <Chart data={data} />
+      </div>
     </div>
   )
 }
