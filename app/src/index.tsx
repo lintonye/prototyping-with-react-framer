@@ -76,7 +76,9 @@ const Chart = ({ data /* see data tab */ }) => (
 
 function convert(data) {
   const series = data["Weekly Time Series"]
-  const dates = Object.keys(series).slice(0, 20)
+  const dates = Object.keys(series)
+    .slice(0, 20)
+    .reverse()
   const newData = dates.map(date => {
     return { x: date, y: series[date]["1. open"] }
   })
