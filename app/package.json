@@ -5,6 +5,7 @@
   "keywords": [],
   "main": "src/index.tsx",
   "dependencies": {
+    "@nivo/line": "^0.59.3",
     "framer": "1.0.14",
     "framer-motion": "^1.2.4",
     "react": "^16.8.6",
