@@ -15,16 +15,16 @@ const Chart = ({ data /* see data tab */ }) => (
     data={data}
     margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
     xScale={{ type: "point" }}
-    yScale={{ type: "linear", stacked: true, min: "auto", max: "auto" }}
+    yScale={{ type: "linear", stacked: false, min: "auto", max: "auto" }}
     axisTop={null}
     axisRight={null}
     axisBottom={{
       orient: "bottom",
       tickSize: 5,
       tickPadding: 5,
-      tickRotation: 0,
-      legend: "transportation",
-      legendOffset: 36,
+      tickRotation: -40,
+      // legend: "date",
+      legendOffset: 66,
       legendPosition: "middle"
     }}
     axisLeft={{
@@ -32,7 +32,7 @@ const Chart = ({ data /* see data tab */ }) => (
       tickSize: 5,
       tickPadding: 5,
       tickRotation: 0,
-      legend: "count",
+      legend: "USD",
       legendOffset: -40,
       legendPosition: "middle"
     }}
@@ -74,11 +74,25 @@ const Chart = ({ data /* see data tab */ }) => (
   />
 )
 
+function convert(data) {
+  const series = data["Weekly Time Series"]
+  const dates = Object.keys(series).slice(0, 20)
+  const newData = dates.map(date => {
+    return { x: date, y: series[date]["1. open"] }
+  })
+  return [
+    {
+      id: "open",
+      data: newData
+    }
+  ]
+}
+
 function App() {
   return (
     <div className="App">
       <div style={{ width: 800, height: 400 }}>
-        <Chart data={data} />
+        <Chart data={convert(data)} />
       </div>
     </div>
   )
