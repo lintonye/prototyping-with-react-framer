@@ -3,7 +3,7 @@ import { render } from "react-dom"
 
 import "./styles.css"
 import { ResponsiveLine } from "@nivo/line"
-import * as data from "./tsla.json"
+// import * as data from "./tsla.json"
 
 // make sure parent container have a defined height when using
 // responsive component, otherwise height will be 0 and
@@ -91,10 +91,21 @@ function convert(data) {
 }
 
 function App() {
+  const [data, setData] = React.useState(null)
+  async function loadData() {
+    const response = await fetch(
+      "https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=MSFT&apikey=demo"
+    )
+    const result = await response.json()
+
+    setData(result)
+  }
+  loadData()
+
   return (
     <div className="App">
       <div style={{ width: 800, height: 400 }}>
-        <Chart data={convert(data)} />
+        {data === null ? <div>Loading...</div> : <Chart data={convert(data)} />}
       </div>
     </div>
   )
