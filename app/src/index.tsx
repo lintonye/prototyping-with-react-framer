@@ -92,15 +92,17 @@ function convert(data) {
 
 function App() {
   const [data, setData] = React.useState(null)
-  async function loadData() {
-    const response = await fetch(
-      "https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=MSFT&apikey=demo"
-    )
-    const result = await response.json()
-
-    setData(result)
-  }
-  loadData()
+  React.useEffect(() => {
+    async function loadData() {
+      const response = await fetch(
+        "https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=MSFT&apikey=demo"
+      )
+      const result = await response.json()
+      console.log(result)
+      setData(result)
+    }
+    loadData()
+  }, [])
 
   return (
     <div className="App">
