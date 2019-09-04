@@ -90,25 +90,41 @@ function convert(data) {
   ]
 }
 
-function App() {
+function StockChart({ symbol }) {
   const [data, setData] = React.useState(null)
   React.useEffect(() => {
     async function loadData() {
       const response = await fetch(
-        "https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=MSFT&apikey=demo"
+        `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${symbol}&apikey=FLQ5KN2TWPY5QGBP`
       )
       const result = await response.json()
       console.log(result)
       setData(result)
     }
     loadData()
-  }, [])
+  }, [symbol])
+  return (
+    <div style={{ width: 800, height: 400 }}>
+      {data === null ? <div>Loading...</div> : <Chart data={convert(data)} />}
+    </div>
+  )
+}
 
+function App() {
+  let [symbol, setSymbol] = React.useState("TSLA")
   return (
     <div className="App">
-      <div style={{ width: 800, height: 400 }}>
-        {data === null ? <div>Loading...</div> : <Chart data={convert(data)} />}
-      </div>
+      <select
+        onChange={v => {
+          setSymbol(v.target.value)
+        }}
+      >
+        <option>TSLA</option>
+        <option>AAPL</option>
+        <option>AMZN</option>
+      </select>
+
+      <StockChart symbol={symbol} />
     </div>
   )
 }
