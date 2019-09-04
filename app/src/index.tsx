@@ -109,7 +109,7 @@ function StockChart({ symbol }) {
   return (
     <div style={{ width: 800, height: 400 }}>
       {loading === true && <div>Loading...</div>}
-      {data === null && <Chart data={convert(data)} />}
+      {data !== null && <Chart data={convert(data)} />}
     </div>
   )
 }
