@@ -95,21 +95,36 @@ function StockChart({ symbol }) {
   const [loading, setLoading] = React.useState(false)
   React.useEffect(() => {
     async function loadData() {
-      setLoading(true)
-      const response = await fetch(
-        `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${symbol}&apikey=FLQ5KN2TWPY5QGBP`
-      )
-      const result = await response.json()
-      setLoading(false)
-      console.log(result)
-      setData(result)
+      try {
+        setLoading(true)
+        // in case of error, setData('error')
+        const response = await fetch(
+          `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY&symbol=${symbol}&apikey=FLQ5KN2TWPY5QGBP`
+        )
+        const result = await response.json()
+        if (result.Note) {
+          setData("Error: quota exceeded, try again later")
+        } else {
+          console.log(result)
+          setData(result)
+        }
+      } catch {
+        setData("Error: network error")
+      } finally {
+        setLoading(false)
+      }
     }
     loadData()
   }, [symbol])
   return (
     <div style={{ width: 800, height: 400 }}>
       {loading === true && <div>Loading...</div>}
-      {data !== null && <Chart data={convert(data)} />}
+      {typeof data === "string" && (
+        <div style={{ color: "red" }}>Network error.</div>
+      )}
+      {data !== null && typeof data !== "string" && (
+        <Chart data={convert(data)} />
+      )}
     </div>
   )
 }
