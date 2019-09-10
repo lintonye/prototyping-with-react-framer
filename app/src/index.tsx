@@ -24,13 +24,11 @@ const CheckMark = ({ checked, ...props }) => (
       variants={{
         checked: {
           pathLength: 1,
-          pathOffset: 0,
           opacity: [0, 1, 1],
           transition: { times: [0, 0.001, 1] }
         },
         unchecked: {
           pathLength: 0,
-          pathOffset: 0,
           opacity: 0
         }
       }}
