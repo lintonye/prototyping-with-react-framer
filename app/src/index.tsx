@@ -97,16 +97,16 @@ function removeFromArray(array, index) {
 
 function App() {
   const [tasks, setTasks] = useState([
-    "Learn React",
-    "Prototype with Framer",
-    "Get Superpowers",
-    "Conquer the universe"
+    { title: "Learn React", checked: false },
+    { title: "Prototype with Framer", checked: false },
+    { title: "Get Superpowers", checked: false },
+    { title: "Conquer the universe", checked: false }
   ])
   return (
     <div className="App">
       <ul>
         <AnimatePresence>
-          {tasks.map((task, idx) => (
+          {tasks.map(({ title, checked }, idx) => (
             <Task
               positionTransition
               animate={{ opacity: 1 }}
@@ -115,11 +115,16 @@ function App() {
                 x: 200,
                 transition: { duration: 0.2 }
               }}
-              title={task}
-              key={task}
-              checked={false}
+              title={title}
+              key={title}
+              checked={checked}
               onClick={() => {
-                setTasks(removeFromArray(tasks, idx))
+                tasks[idx].checked = true
+                const newTasks = [...tasks]
+                setTasks(newTasks)
+                setTimeout(() => {
+                  setTasks(removeFromArray(tasks, idx))
+                }, 400)
               }}
             />
           ))}
