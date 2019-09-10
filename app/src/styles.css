@@ -3,15 +3,23 @@
   text-align: center;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 
 body {
-  background: #ff7e5f;
-  background: linear-gradient(
-    to top,
-    #feb47b,
-    #ff7e5f
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #fdc830; /* fallback for old browsers */
+  background: linear-gradient(to top, #fdc830, #f37335);
+}
+
+button {
+  font-size: 20px;
+  padding: 8px 40px;
+  border-radius: 6px;
+}
+
+button:focus {
+  outline: none;
 }
