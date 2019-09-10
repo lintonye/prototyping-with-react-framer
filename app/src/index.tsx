@@ -32,7 +32,7 @@ function App() {
             key={task}
             style={liStyle}
             onClick={() => {
-              setTasks(ts => removeFromArray(ts, idx))
+              setTasks(removeFromArray(tasks, idx))
             }}
           >
             {task}
