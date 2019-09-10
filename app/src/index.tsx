@@ -26,14 +26,20 @@ function App() {
     minWidth: 300
   }
   return (
+    // <li key={0}>Learn React</li>
     <div className="App">
+      <button onClick={() => setTasks([...tasks, "Be ultimately happy"])}>
+        Add
+      </button>
       <ul>
         <AnimatePresence>
           {tasks.map((task, idx) => (
             <motion.li
-              key={task}
+              key={idx}
               style={liStyle}
               positionTransition
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
               exit={{ opacity: 0, x: 300, transition: { duration: 0.3 } }}
               onClick={() => {
                 setTasks(removeFromArray(tasks, idx))
