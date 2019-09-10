@@ -1,6 +1,7 @@
 import * as React from "react"
 import { useState } from "react"
 import { render } from "react-dom"
+import { motion, AnimatePresence } from "framer-motion"
 
 import "./styles.css"
 
@@ -27,17 +28,21 @@ function App() {
   return (
     <div className="App">
       <ul>
-        {tasks.map((task, idx) => (
-          <li
-            key={task}
-            style={liStyle}
-            onClick={() => {
-              setTasks(removeFromArray(tasks, idx))
-            }}
-          >
-            {task}
-          </li>
-        ))}
+        <AnimatePresence>
+          {tasks.map((task, idx) => (
+            <motion.li
+              key={task}
+              style={liStyle}
+              positionTransition
+              exit={{ opacity: 0, x: 300, transition: { duration: 0.3 } }}
+              onClick={() => {
+                setTasks(removeFromArray(tasks, idx))
+              }}
+            >
+              {task}
+            </motion.li>
+          ))}
+        </AnimatePresence>
       </ul>
     </div>
   )
