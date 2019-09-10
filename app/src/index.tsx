@@ -55,18 +55,7 @@ function Task({ title, checked, ...props }) {
     minWidth: 300
   }
   return (
-    <motion.li
-      drag="x"
-      style={liStyle}
-      positionTransition
-      animate={{ opacity: 1 }}
-      exit={{
-        opacity: 0,
-        x: 200,
-        transition: { duration: 0.2 }
-      }}
-      {...props}
-    >
+    <motion.li style={liStyle} {...props}>
       <motion.div
         animate={checked ? "checked" : "unchecked"}
         style={{
@@ -121,6 +110,13 @@ function App() {
         <AnimatePresence>
           {tasks.map((task, idx) => (
             <Task
+              positionTransition
+              animate={{ opacity: 1 }}
+              exit={{
+                opacity: 0,
+                x: 200,
+                transition: { duration: 0.2 }
+              }}
               title={task}
               key={task}
               checked={false}
