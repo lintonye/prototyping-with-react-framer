@@ -10,7 +10,10 @@ function App() {
       style={{
         height: 2000,
         width: "100%",
-        background: "url(/plaid.jpeg)"
+        background: "url(/plaid.jpeg)",
+        display: "flex",
+        justifyContent: "center"
+        // alignItems: "center"
       }}
     >
       {/* Icon */}
@@ -18,8 +21,9 @@ function App() {
         src="/starship.png"
         style={{
           width: 200,
+          height: 200,
           background: "white",
-          margin: "400px 0 0 200px"
+          marginTop: 400
         }}
       />
     </div>
