@@ -19,6 +19,7 @@ function App() {
       <motion.img
         src="/starship.png"
         style={{
+          boxShadow: "2px 2px 15px rgba(0,0,0,.25)",
           width: 200,
           height: 200,
           background: "white",
