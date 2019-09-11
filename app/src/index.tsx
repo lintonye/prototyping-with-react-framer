@@ -6,7 +6,7 @@ import "./styles.css"
 
 function App() {
   return (
-    <motion.div
+    <div
       style={{
         height: 2000,
         width: "100%",
@@ -22,7 +22,7 @@ function App() {
           margin: "400px 0 0 200px"
         }}
       />
-    </motion.div>
+    </div>
   )
 }
 
