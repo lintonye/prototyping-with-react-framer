@@ -13,7 +13,6 @@ function App() {
         background: "url(/plaid.jpeg)",
         display: "flex",
         justifyContent: "center"
-        // alignItems: "center"
       }}
     >
       {/* Icon */}
