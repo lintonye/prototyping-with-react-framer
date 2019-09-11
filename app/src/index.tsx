@@ -1,35 +1,47 @@
 import * as React from "react"
 import { render } from "react-dom"
-import { motion, AnimatePresence } from "framer-motion"
+import {
+  motion,
+  useViewportScroll,
+  useMotionValue,
+  useTransform
+} from "framer-motion"
 
 import "./styles.css"
-function App() {
-  let [count, setCount] = React.useState(0)
 
+function App() {
+  const { scrollY } = useViewportScroll()
+  const iconOpacity = useTransform(scrollY, [0, 500], [1, 0])
+  const iconBorderRadius = useTransform(scrollY, [0, 500], [20, 100])
+  // offset.onChange(v => console.log(v))
   return (
-    <div className="App">
-      <h1>
-        Count:{" "}
-        <AnimatePresence>
-          <motion.span
-            key={count}
-            initial={{ opacity: 0, y: -40 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 40 }}
-            style={{ position: "absolute", marginLeft: 10 }}
-          >
-            {count}
-          </motion.span>
-        </AnimatePresence>
-      </h1>
-      <button
-        onClick={function() {
-          setCount(count + 1)
+    <motion.div>
+      <motion.div>
+        {/* Plaid background */}
+        <motion.div
+          style={{
+            height: 2000,
+            width: "100%",
+            opacity: 0.5,
+            background: "url(/plaid.jpeg)",
+            position: "absolute",
+            top: 0
+          }}
+        />
+      </motion.div>
+      {/* Icon */}
+      <motion.img
+        src="/starship.png"
+        style={{
+          width: 200,
+          opacity: iconOpacity,
+          background: "white",
+          borderRadius: iconBorderRadius,
+          z: 1,
+          margin: "400px 0 0 200px"
         }}
-      >
-        +1
-      </button>
-    </div>
+      />
+    </motion.div>
   )
 }
 
