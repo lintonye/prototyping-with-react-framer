@@ -5,6 +5,8 @@ import { motion, useMotionValue, useTransform } from "framer-motion"
 import "./styles.css"
 
 function App() {
+  let knobX = useMotionValue(0)
+  let knobY = useMotionValue(0)
   const trackR = 233 / 2
   const strokeWidth = 19
   const knobSize = 18
@@ -15,6 +17,13 @@ function App() {
           width: trackR * 2,
           height: trackR * 2,
           position: "relative"
+        }}
+        onPan={(_, info) => {
+          const x = info.point.x - window.innerWidth / 2
+          const y = info.point.y - window.innerHeight / 2
+
+          knobX.set(x)
+          knobY.set(y)
         }}
       >
         {/* Circle */}
@@ -42,6 +51,8 @@ function App() {
         {/* Knob */}
         <motion.div
           style={{
+            x: knobX,
+            y: knobY,
             width: knobSize * 2,
             height: knobSize * 2,
             background: "white",
