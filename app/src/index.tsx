@@ -10,7 +10,7 @@ function App() {
   const knobSize = 18
   return (
     <div className="App">
-      <motion.div
+      <div
         style={{
           width: trackR * 2,
           height: trackR * 2,
@@ -53,7 +53,7 @@ function App() {
             position: "absolute"
           }}
         />
-      </motion.div>
+      </div>
     </div>
   )
 }
