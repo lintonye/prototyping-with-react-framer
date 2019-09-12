@@ -17,6 +17,7 @@ function App() {
           position: "relative"
         }}
       >
+        {/* Circle */}
         <motion.svg
           width="233"
           height="233"
@@ -38,6 +39,7 @@ function App() {
             d="M116.5 10C175.318 10 223 57.682 223 116.5S175.318 223 116.5 223 10 175.318 10 116.5 57.682 10 116.5 10z"
           />
         </motion.svg>
+        {/* Knob */}
         <motion.div
           style={{
             width: knobSize * 2,
