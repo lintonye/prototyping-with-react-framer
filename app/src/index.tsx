@@ -5,15 +5,9 @@ import { motion, useMotionValue, useTransform } from "framer-motion"
 import "./styles.css"
 
 function App() {
-  const initialAngle = (-90 / 180) * Math.PI
-  const angleMv = useMotionValue(0)
   const trackR = 233 / 2
   const strokeWidth = 19
-  const knobR = trackR - strokeWidth / 2
   const knobSize = 18
-  const x = useTransform(angleMv, a => knobR * Math.cos(a + initialAngle))
-  const y = useTransform(angleMv, a => knobR * Math.sin(a + initialAngle))
-  const pathLength = useTransform(angleMv, [0, 2 * Math.PI], [0, 1])
   return (
     <div className="App">
       <motion.div
@@ -21,17 +15,6 @@ function App() {
           width: trackR * 2,
           height: trackR * 2,
           position: "relative"
-        }}
-        onPan={(_, info) => {
-          const { point } = info
-          // TODO this `center` may not be screen center
-          const center = [window.innerWidth / 2, window.innerHeight / 2]
-          const x = point.x - center[0]
-          const y = point.y - center[1]
-          let angle = Math.atan2(y, x) - initialAngle
-          if (angle < 0) angle += 2 * Math.PI
-
-          angleMv.set(angle)
         }}
       >
         <motion.svg
@@ -53,13 +36,10 @@ function App() {
             strokeWidth={strokeWidth}
             strokeLinecap="round"
             d="M116.5 10C175.318 10 223 57.682 223 116.5S175.318 223 116.5 223 10 175.318 10 116.5 57.682 10 116.5 10z"
-            style={{ pathLength }}
           />
         </motion.svg>
         <motion.div
           style={{
-            x,
-            y,
             width: knobSize * 2,
             height: knobSize * 2,
             background: "white",
