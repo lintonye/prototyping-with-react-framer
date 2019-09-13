@@ -5,11 +5,14 @@ import { motion, useMotionValue, useTransform } from "framer-motion"
 import "./styles.css"
 
 function App() {
-  let knobX = useMotionValue(0)
-  let knobY = useMotionValue(0)
+  const initialAngle = (-90 / 180) * Math.PI
+  let angle = useMotionValue(initialAngle)
   const trackR = 233 / 2
   const strokeWidth = 19
   const knobSize = 18
+  let knobX = useTransform(angle, a => Math.cos(a) * (trackR - knobSize / 2))
+  let knobY = useTransform(angle, a => Math.sin(a) * (trackR - knobSize / 2))
+
   return (
     <div className="App">
       <motion.div
@@ -22,8 +25,9 @@ function App() {
           const x = info.point.x - window.innerWidth / 2
           const y = info.point.y - window.innerHeight / 2
 
-          knobX.set(x)
-          knobY.set(y)
+          // Get the angle from x and y
+          let panAngle = Math.atan2(y, x)
+          angle.set(panAngle)
         }}
       >
         {/* Circle */}
