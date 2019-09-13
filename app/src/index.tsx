@@ -7,6 +7,11 @@ import "./styles.css"
 function App() {
   const initialAngle = (-90 / 180) * Math.PI
   let angle = useMotionValue(initialAngle)
+  const angleInDegrees = useTransform(angle, a => (a * 180) / Math.PI)
+  const convertedAngle = useTransform(angleInDegrees, a =>
+    -90 <= a && a <= 180 ? a + 90 : 360 + a + 90
+  )
+  const pathLength = useTransform(convertedAngle, [0, 360], [0, 1])
   const trackR = 233 / 2
   const strokeWidth = 19
   const knobSize = 18
@@ -27,6 +32,8 @@ function App() {
 
           // Get the angle from x and y
           let panAngle = Math.atan2(y, x)
+          console.log(panAngle)
+
           angle.set(panAngle)
         }}
       >
@@ -50,6 +57,7 @@ function App() {
             strokeWidth={strokeWidth}
             strokeLinecap="round"
             d="M116.5 10C175.318 10 223 57.682 223 116.5S175.318 223 116.5 223 10 175.318 10 116.5 57.682 10 116.5 10z"
+            style={{ pathLength }}
           />
         </motion.svg>
         {/* Knob */}
