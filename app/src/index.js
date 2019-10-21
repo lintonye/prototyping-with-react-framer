@@ -24,11 +24,10 @@ console.log(microwave(sandwichMaker("🍤")))
 console.log(microwave(sandwichMaker("🍖")))
 
 function App() {
-  let [knobX, cycleKnobX] = useCycle(0, 60)
+  let [mode, cycleMode] = useCycle("off", "on")
   // let result = useCycle(0, 60)
   // let knobX = result[0]
   // let cycleKnobX = result[1]
-  console.log(knobX)
   return (
     <div className="App">
       <Frame
@@ -40,14 +39,23 @@ function App() {
           // change the value of knobX
           console.log("tapped")
           // knobX = 60 // won't work in React!
-          cycleKnobX()
+          cycleMode()
         }}
         background="#999"
+        animate={mode}
+        variants={{
+          off: { background: "#999" },
+          on: { background: "orange" }
+        }}
       >
         <Frame
           size={60}
           borderRadius={30}
-          animate={{ x: knobX }}
+          // animate={mode}
+          variants={{
+            off: { x: 0, scale: 1 },
+            on: { x: 60, scale: 1.2 }
+          }}
           transition={{ duration: 0.2 }}
           background="white"
           shadow="0 1px 5px rgba(0,0,0,0.5)"
