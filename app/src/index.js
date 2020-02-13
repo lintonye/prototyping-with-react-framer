@@ -1,30 +1,10 @@
-import React from "react"
-import ReactDOM from "react-dom"
-import { Frame, useCycle } from "framer"
-import "./styles.css"
-
-// parameter
-function microwave(food) {
-  // function body
-  // return value
-  return "heated " + food
-}
-
-function sandwichMaker(meat) {
-  let sandwich = "🍞"
-  sandwich = sandwich + meat
-  sandwich = sandwich + "🍀"
-  sandwich = sandwich + "🍞"
-  return sandwich
-}
-
-// call the function
-console.log(microwave(sandwichMaker("🥓")))
-console.log(microwave(sandwichMaker("🍤")))
-console.log(microwave(sandwichMaker("🍖")))
+import React from "react";
+import ReactDOM from "react-dom";
+import { Frame, useCycle } from "framer";
+import "./styles.css";
 
 function App() {
-  let [mode, cycleMode] = useCycle("off", "on")
+  let [mode, cycleMode] = useCycle("off", "on");
   // let result = useCycle(0, 60)
   // let knobX = result[0]
   // let cycleKnobX = result[1]
@@ -37,15 +17,15 @@ function App() {
         center
         onTap={function handleTap() {
           // change the value of knobX
-          console.log("tapped")
+          console.log("tapped");
           // knobX = 60 // won't work in React!
-          cycleMode()
+          cycleMode();
         }}
         background="#999"
         animate={mode}
         variants={{
           off: { background: "#999" },
-          on: { background: "orange" }
+          on: { background: "orange" },
         }}
       >
         <Frame
@@ -54,7 +34,7 @@ function App() {
           // animate={mode}
           variants={{
             off: { x: 0, scale: 1 },
-            on: { x: 60, scale: 1.2 }
+            on: { x: 60, scale: 1.2 },
           }}
           transition={{ duration: 0.2 }}
           background="white"
@@ -62,8 +42,8 @@ function App() {
         />
       </Frame>
     </div>
-  )
+  );
 }
 
-const rootElement = document.getElementById("root")
-ReactDOM.render(<App />, rootElement)
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
