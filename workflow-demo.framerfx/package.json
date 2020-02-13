@@ -1,0 +1,21 @@
+{
+	"main": "dist/index.js",
+	"license": "MIT",
+	"dependencies": {
+		"@framer/hunterc.components": "1.5.0",
+		"@framer/kasimir.iphone-x-kit": "^1.21.0",
+		"@framer/lintonye.parallax": "^1.52.0",
+		"@framer/ruucm-h.enhanced-lottie": "^1.47.0"
+	},
+	"devDependencies": {
+		"@types/react": "^16.8"
+	},
+	"peerDependencies": {
+		"framer": "^1.0",
+		"react": "^16.8"
+	},
+	"framer": {
+		"id": "9243d708-cca5-4457-b2a1-7526345bdd30"
+	},
+	"author": "Linton Ye"
+}
