@@ -45,6 +45,11 @@ function App() {
           borderRadius: 30,
           background: "white",
           shadow: "0 1px 5px rgba(0,0,0,0.5)",
+          variants: {
+            off: { x: 0, scale: 1 },
+            on: { x: 60, scale: 1.2 },
+          },
+          transition: { duration: 0.2 },
         })}
       </Frame>
     </div>
