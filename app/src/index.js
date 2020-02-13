@@ -28,7 +28,7 @@ function App() {
           on: { background: "orange" },
         }}
       >
-        <Frame
+        {/* <Frame
           size={60}
           borderRadius={30}
           // animate={mode}
@@ -39,7 +39,13 @@ function App() {
           transition={{ duration: 0.2 }}
           background="white"
           shadow="0 1px 5px rgba(0,0,0,0.5)"
-        />
+        /> */}
+        {React.createElement(Frame, {
+          size: 60,
+          borderRadius: 30,
+          background: "white",
+          shadow: "0 1px 5px rgba(0,0,0,0.5)",
+        })}
       </Frame>
     </div>
   );
